@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+	<head>
+		<title>Web Timer</title>
+    <!-- <script type="text/javascript" src="https://livejs.com/live.js"></script> -->
+		<style>
+      :root {
+				--buttonSize: 220px;
+				--minBorderColor: #202020;
+			}
+
+			body {
+				background-color: black;
+					color: white;
+			}
+
+      #label { font-size: 6em; color: green;}
+
+			.container .row {
+				margin:0px;
+				padding: 20px;
+				text-align:center; 
+				height: 220px; 
+			}
+
+      button { 
+				margin: 20px;
+				padding: 0px;
+				text-align: center;
+				font-family: sans-serif;
+				font-size: 4em;
+				width: var(--buttonSize); 
+				height: var(--buttonSize); 
+				border-radius: var(--buttonSize);
+				border: 2px solid var(--minBorderColor); 
+			}
+
+			input[type=range] {
+  width: 100%;
+  margin: 70px 0;
+  background-color: transparent;
+  -webkit-appearance: none;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  background: #ffffff;
+  border: 1.1px solid #18d501;
+  border-radius: 1px;
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  margin-top: -71.1px;
+  width: 50px;
+  height: 150px;
+  background: #492a35;
+  border: 2.5px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #ffffff;
+}
+input[type=range]::-moz-range-track {
+  background: #ffffff;
+  border: 1.1px solid #18d501;
+  border-radius: 1px;
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  width: 50px;
+  height: 150px;
+  background: #492a35;
+  border: 2.5px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  background: transparent;
+  border-color: transparent;
+  border-width: 72.6px 0;
+  color: transparent;
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+}
+input[type=range]::-ms-fill-lower {
+  background: #f2f2f2;
+  border: 1.1px solid #18d501;
+  border-radius: 2px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #ffffff;
+  border: 1.1px solid #18d501;
+  border-radius: 2px;
+}
+input[type=range]::-ms-thumb {
+  width: 50px;
+  height: 150px;
+  background: #492a35;
+  border: 2.5px solid #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0px;
+  /*Needed to keep the Edge thumb centred*/
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #ffffff;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ffffff;
+}
+/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+how to remove the virtical space around the range input in IE*/
+@supports (-ms-ime-align:auto) {
+  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+  input[type=range] {
+    margin: 0;
+    /*Edge starts the margin from the thumb, not the track as other browsers do*/
+  }
+}
+
+
+
+      button:active { border: 80px solid white; }
+			#button-1 { background-color: blue; }
+			#button-2 { background-color: red; }
+			#button-3 { background-color: yellow; }
+			#button-4 { background-color: green; }
+			#button-5 { background-color: orange; }
+
+			button.active { background-color: blue; }
+
+			#rgbLED {
+				background-color: #202020;
+			}
+
+			#rgbLED.on {
+				background-color: #f0f0f0;
+			}
+		</style>
+		<script>
+			var activeNumber = -1;
+			var remaining = -1;
+			var lastTime = null;
+
+			function setTitle(s) {
+				document.title = "WebTimer - " + s
+			}
+
+			function clicked(o) {
+				if (activeNumber > -1) {
+					return
+				}
+				start(o.value);
+			}
+
+			function start(number) {
+				activeNumber = number;
+				getButton(activeNumber).className = "active"
+				flashLED(120);
+        playStart();
+        const spreadID = document.getElementById("spread").value;
+				remaining = spread[spreadID][number];
+        setLabel(remaining + "s");
+				updateTime();
+			}
+
+			function getButton(number) {
+				return document.getElementById("button-" + number)
+			}
+
+			function stop() {
+				getButton(activeNumber).className = ""
+				activeNumber = -1;
+			}
+
+			function elapsedSeconds() {
+				let now = new Date().getTime();
+				let ms = now - lastTime; 
+				return ms / 1000
+			}
+
+			function updateTime() {
+				lastTime = new Date().getTime();
+			}
+
+			function ringLED() {
+				var led = document.getElementById('rgbLED');
+				let timer = setInterval(() => {
+					var randomColor = Math.floor(Math.random()*16777215).toString(16);
+					led.style.backgroundColor = randomColor;
+				}, 80)
+				setTimeout(() => {
+					clearInterval(timer);
+					led.style.backgroundColor = "";
+				}, 3000);
+			}
+
+			function flashLED(ms) {
+				var led = document.getElementById('rgbLED');
+				led.className = "on";
+				setTimeout(() => { led.className = "off" }, ms);
+			}
+
+			function tick() {
+				if (activeNumber == -1) {
+					return
+				}
+
+				// tick once per second
+				if (elapsedSeconds() < 1) {
+					return
+				}
+
+				// count down
+				remaining--;
+				updateTime();
+				if (remaining > 0) {
+					// timer isn't done yet
+					setTitle(remaining)
+          setLabel(remaining + "s");
+          if (remaining % 4 == 0 || remaining < 10) {
+            playTick(remaining < 5);
+            flashLED(120);
+          }
+					return
+				}
+
+				// timer is done
+				setTitle("ding");
+				ringLED();
+        setLabel("");
+        playDone();
+				stop()
+			}
+
+      function initAudio() {
+        oscillator = context.createOscillator();
+        oscillator.frequency.value = 200;
+
+        oscillator.connect(context.destination);
+
+      }
+
+      let audioContext = null;
+
+      function getAudioContext() {
+        if (audioContext === null) {
+          var AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioContext = new AudioContext();
+        }
+        return audioContext;
+      }
+
+      function playStart() {
+        osc = new OscillatorNode(getAudioContext(), {
+          type: 'sine',
+          frequency: '1300',
+        })
+        osc.connect(audioContext.destination);
+        osc.start(0);
+        setTimeout(() => {osc.stop(0)}, 200);
+      }
+
+      function playTick(high) {
+        let freq = high ? 1250 : 1200;
+        osc = new OscillatorNode(getAudioContext(), {
+          type: 'sine',
+          frequency: freq,
+        })
+        osc.connect(audioContext.destination);
+        osc.start(0);
+        setTimeout(() => {osc.stop(0)}, 100);
+      }
+
+      function playDone() {
+        osc = new OscillatorNode(getAudioContext(), {
+          type: 'triangle',
+          frequency: '1200',
+        })
+        osc.connect(audioContext.destination);
+        osc.start(0);
+        setTimeout(() => {osc.stop(0)}, 1200);
+      }
+
+      var spread = {
+        "0": {
+          "1": 10,
+          "2": 25,
+          "3": 40,
+          "4": 65,
+          "5": 90,
+        },
+        "1": {
+          "1": 10,
+          "2": 30,
+          "3": 60,
+          "4": 120,
+          "5": 210,
+        },
+        "2": {
+          "1": 90,
+          "2": 139,
+          "3": 189,
+          "4": 230,
+          "5": 288,
+        },
+      }
+
+      function setLabel(s) {
+        document.getElementById("label").innerText = s;
+      }
+
+			var ticker = new Worker('ticker.js')
+			ticker.addEventListener('message', tick);
+
+			setTitle("ready")
+
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<button id="button-1" value="1" onclick="clicked(this)">1</button>
+			</div>
+			<div class="row">
+				<button id="button-2" value="2" onclick="clicked(this)">2</button>
+				<button id="rgbLED" disabled>&nbsp;</button>
+				<button id="button-3" value="3" onclick="clicked(this)">3</button>
+			</div>
+			<div class="row">
+				<button id="button-4" value="4" onclick="clicked(this)">4</button>
+				<button id="button-5" value="5" onclick="clicked(this)">5</button>
+			</div>
+			<div style="padding: 200px; text-align: center;">
+        <p id="label"></p>
+				<input type="range" id="spread" value=0 min=0 max=2 />
+			</div>
+		</div>
+    <button onclick="getAudioContext()">init</button>
+	</body>
+</html>
