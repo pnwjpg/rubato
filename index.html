@@ -1,81 +1,345 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Rubato Woodcrafts</title>
-		<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/js/lightbox.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/css/lightbox.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand" />
-		<style>
-			body { 
-				font-family: Quicksand, sans-serif; 
-				background-color: #fff5e1; 
-					margin: 0px;
-						padding: 0px;
-			}
-			div {
-				text-align: center;
-			}
-			div.container {
-				padding-top: 20px;
-				max-width: 800px;
-				margin: 0 auto;
-				font-size: 1.5em;
-			}
-			div.bar {
-				background-color: #b6a88a;
-				height: 20px;
-				width: 100%;
-				padding: 0px;
-				margin: 0px;
-			}
-			div.top {
-				position: fixed;
-				top: 0px;
-			}
-			div.bottom {
-				position: fixed;
-				bottom: 0px;
-			}
-			div.quotes {
-				width: 600px;
-				margin: 0 auto;
-			}
-			div.about {
-				width: 800px;
-				margin: 0 auto;
-			}
-			div.gallery {
-			  width: 800px;
-					margin: 0 auto;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="bar top"></div>
-		<div class="container">
-			<img src="header.png" style="max-width: 800px;" alt="Rubato Woodcrafts" title="Rubato Woodcrafts"/>
-			<div class="quotes">
-				<p><i>Tempo rubato means literally in robbed time, i.e., duration taken from one measure or beat and given to another<br \>- Karl Wilson Gehrkens -</i></p>
-				<p></p>
-			</div>
-			<div class="about">
-				<p>Named after the musical term, Rubato Woodcrafts is a creative enterprise with freedom to explore functional and artistic expression through the medium of fine woodworking.</p>
-				<p>Rubato Woodcrafts is located in Maple Valley, Washington.</p>
-			</div>
-			<div class="gallery">
-				<a href="gallery/IMG_9286.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_9286.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_0055.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_0055.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_5616.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_5616.jpeg" height="300px" /></a>
-               <a href="gallery/IMG_0682.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_0682.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_5694.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_5694.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_6126.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_6126.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_6322.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_6322.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_6520.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_6520.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_8210.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_8210.jpeg" height="300px" /></a>
-              <a href="gallery/IMG_9890.jpeg" data-lightbox="g" data-title="Caption"><img src="gallery/IMG_9890.jpeg" height="300px" /></a>
-			<div>
-			<img src="plane.png" />
-		</div>
-		<div class="bar bottom"></div>
-	</body>
+<head>
+    <title>Rubato Woodcrafts</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/js/lightbox.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.5/dist/css/lightbox.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body { 
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #fffcf6 100%);
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .bar {
+            background: linear-gradient(90deg, #b6a88a 0%, #a8997d 50%, #b6a88a 100%);
+            height: 6px;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(182, 168, 138, 0.3);
+        }
+
+        .bar.top {
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .bar.bottom {
+            position: fixed;
+            bottom: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+            text-align: center;
+        }
+
+        .header-section {
+            background: #ffffff;
+            width: 100%;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        .header-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(182, 168, 138, 0.3) 50%, transparent 100%);
+        }
+
+        .header-logo {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.15));
+            padding-bottom: 20px;
+            padding-left: 60px;
+            padding-right: 60px;
+            background-color: #fff5e1;
+        }
+
+        .quotes {
+            margin: 0 auto 3rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 0px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(182, 168, 138, 0.2);
+        }
+
+        .quotes p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .about {
+            text-align: center;
+            margin: 0 auto;
+            font-size: 4rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-footer {
+            font-size: 1.5em;
+        }
+
+        .gallery {
+            max-width: 100%;
+            margin: 0 auto 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .gallery-item:hover img {
+            transform: none;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(182, 168, 138, 0.05) 0%, rgba(182, 168, 138, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0;
+        }
+
+        /* Special layout for specific image */
+        .gallery-item:nth-child(4) {
+            grid-row: span 2;
+        }
+
+        .gallery-item:nth-child(4) img {
+            height: 580px;
+        }
+
+        .plane-image {
+            margin-top: 2rem;
+            opacity: 0.6;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px 50px;
+            }
+
+            .quotes {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .quotes p {
+                font-size: 1.1rem;
+            }
+
+            .about {
+                font-size: 1.1rem;
+                margin-bottom: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .gallery-item img {
+                height: 250px;
+            }
+
+            .gallery-item:nth-child(4) img {
+                height: 520px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quotes {
+                padding: 1.5rem 1rem;
+            }
+
+            .quotes p {
+                font-size: 1rem;
+            }
+
+            .about {
+                font-size: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .gallery-item img {
+                height: 220px;
+            }
+
+            .gallery-item:nth-child(4) img {
+                height: 460px;
+            }
+        }
+
+        /* Loading animation for images */
+        .gallery-item img {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Stagger the animation for each image */
+        .gallery-item:nth-child(1) img { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) img { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) img { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) img { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) img { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) img { animation-delay: 0.6s; }
+        .gallery-item:nth-child(7) img { animation-delay: 0.7s; }
+        .gallery-item:nth-child(8) img { animation-delay: 0.8s; }
+        .gallery-item:nth-child(9) img { animation-delay: 0.9s; }
+        .gallery-item:nth-child(10) img { animation-delay: 1s; }
+    </style>
+</head>
+<body>
+    <div class="bar top"></div>
+    
+    <div class="header-section">
+        <img src="header.png" class="header-logo" alt="Rubato Woodcrafts" title="Rubato Woodcrafts"/>
+    </div>
+    
+
+    <div class="about">
+        <p><i>Tempo rubato means literally in robbed time, i.e., duration taken from one measure or beat and given to another<br>- Karl Wilson Gehrkens -</i></p>
+    </div>
+
+    <div class="container">
+        
+        <div class="gallery">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <a href="gallery/IMG_9286.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_9286.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_0055.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_0055.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_5616.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_5616.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_0682.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_0682.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_5694.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_5694.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_6126.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_6126.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_6322.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_6322.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_6520.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_6520.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_8210.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_8210.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+                <div class="gallery-item">
+                    <a href="gallery/IMG_9890.jpeg" data-lightbox="g" data-title="Caption">
+                        <img src="gallery/IMG_9890.jpeg" alt="Woodcraft piece" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about about-footer">
+            <p>Rubato Woodcrafts is located in Maple Valley, Washington.</p>
+        </div>
+
+        <div>
+            <img src="plane.png" class="plane-image" alt="Wood plane" />
+        </div>
+    </div>
+    
+    <div class="bar bottom"></div>
+</body>
 </html>
