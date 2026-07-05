@@ -33,16 +33,24 @@
             text-transform: uppercase;
         }
 
+        nav a, nav .current {
+            margin: 0 1rem;
+            padding-bottom: 2px;
+        }
+
         nav a {
             color: #111;
             text-decoration: none;
             border-bottom: 1px solid #111;
-            padding-bottom: 2px;
         }
 
         nav a:hover {
             color: #555;
             border-color: #555;
+        }
+
+        nav .current {
+            color: #999;
         }
 
         .rule {
@@ -81,7 +89,7 @@
     </header>
 
     <nav>
-        <a href="./">Gallery</a>
+        <a href="./">Gallery</a> <a href="articles.html">Articles</a> <span class="current">Contact</span>
     </nav>
 
     <hr class="rule">

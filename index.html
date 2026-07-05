@@ -84,19 +84,47 @@
             font-size: 0.8rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+        }
+
+        nav a, nav .current {
+            margin: 0 1rem;
+            padding-bottom: 2px;
         }
 
         nav a {
             color: #111;
             text-decoration: none;
             border-bottom: 1px solid #111;
-            padding-bottom: 2px;
         }
 
         nav a:hover {
             color: #555;
             border-color: #555;
+        }
+
+        nav .current {
+            color: #999;
+        }
+
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.93);
+            cursor: zoom-out;
+        }
+
+        #lightbox.open {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 96vw;
+            max-height: 96vh;
+            object-fit: contain;
         }
 
         footer {
@@ -120,6 +148,12 @@
     <header>
         <img src="logo-header.png" alt="Rubato Woodcrafts">
     </header>
+
+    <nav>
+        <span class="current">Gallery</span> <a href="articles.html">Articles</a> <a href="contact.html">Contact</a>
+    </nav>
+
+    <hr class="rule">
 
     <p class="quote">
         Tempo rubato means literally in robbed time, i.e., duration taken from one measure or beat and given to another
@@ -145,12 +179,38 @@
 
     <hr class="rule">
 
-    <nav>
-        <a href="contact.html">Contact</a>
-    </nav>
-
     <footer>
         Rubato Woodcrafts is located on Bainbridge Island, Washington.
     </footer>
+
+    <div id="lightbox">
+        <img alt="">
+    </div>
+
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = lightbox.querySelector('img');
+
+        document.querySelectorAll('.gallery a').forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                lightboxImg.src = link.getAttribute('href');
+                lightboxImg.alt = link.querySelector('img').alt;
+                lightbox.classList.add('open');
+            });
+        });
+
+        lightbox.addEventListener('click', function () {
+            lightbox.classList.remove('open');
+            lightboxImg.removeAttribute('src');
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                lightbox.classList.remove('open');
+                lightboxImg.removeAttribute('src');
+            }
+        });
+    </script>
 </body>
 </html>

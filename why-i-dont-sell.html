@@ -33,16 +33,32 @@
             text-transform: uppercase;
         }
 
+        nav a, nav .current {
+            margin: 0 1rem;
+            padding-bottom: 2px;
+        }
+
         nav a {
             color: #111;
             text-decoration: none;
             border-bottom: 1px solid #111;
-            padding-bottom: 2px;
         }
 
         nav a:hover {
             color: #555;
             border-color: #555;
+        }
+
+        nav .current {
+            color: #999;
+        }
+
+        article a {
+            color: #111;
+        }
+
+        article a:hover {
+            color: #555;
         }
 
         .rule {
@@ -120,7 +136,7 @@
     </header>
 
     <nav>
-        <a href="./">Gallery</a> &nbsp;&middot;&nbsp; <a href="contact.html">Contact</a>
+        <a href="./">Gallery</a> <a href="articles.html">Articles</a> <a href="contact.html">Contact</a>
     </nav>
 
     <hr class="rule">
@@ -149,8 +165,7 @@
 
         <p>In some rare cases, I might ask you to chip in for materials or shipping, but only when the costs are significant, like a special lumber run for a big build or shipping something heavy across the country. If it's a few dollars, forget it.</p>
 
-        <!-- TODO: link the phrase below to the wood-wishlist page once it exists -->
-        <p>And if that still doesn't feel like enough: woodworkers never say no to good free wood. See <em>what kind of wood do woodworkers want?</em> for what I can actually use.</p>
+        <p>And if that still doesn't feel like enough: woodworkers never say no to good free wood. See <a href="free-wood.html"><em>what kind of wood do woodworkers want?</em></a> for what I can actually use.</p>
     </article>
 
     <hr class="rule">
