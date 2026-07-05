@@ -1,0 +1,32 @@
+name: Sync gallery
+
+on:
+  pull_request:
+    paths:
+      - 'gallery/**'
+
+permissions:
+  contents: write
+
+jobs:
+  resync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Regenerate gallery block
+        run: ./resync-gallery.sh
+
+      - name: Commit if out of sync
+        run: |
+          if git diff --quiet; then
+            echo "Gallery already in sync; nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add index.html
+            git commit -m "chore: resync gallery with image files"
+            git push
+          fi
