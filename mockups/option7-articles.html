@@ -79,57 +79,31 @@
             opacity: 0.85;
         }
 
-        .articles {
-            text-align: center;
-            padding: 0 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .articles h2 {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #999;
-            margin-bottom: 1.25rem;
-        }
-
-        .articles a {
-            display: block;
-            max-width: 420px;
-            margin: 0 auto 0.9rem;
-            color: #111;
-            text-decoration: none;
-            font-size: 0.95rem;
-        }
-
-        .articles a span {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 2px;
-        }
-
-        .articles a:hover span {
-            border-color: #111;
-        }
-
         nav {
             text-align: center;
             font-size: 0.8rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            margin-bottom: 2.5rem;
+        }
+
+        nav a, nav .current {
+            margin: 0 1rem;
+            padding-bottom: 2px;
         }
 
         nav a {
             color: #111;
             text-decoration: none;
             border-bottom: 1px solid #111;
-            padding-bottom: 2px;
         }
 
         nav a:hover {
             color: #555;
             border-color: #555;
+        }
+
+        nav .current {
+            color: #999;
         }
 
         footer {
@@ -154,6 +128,12 @@
         <img src="../logo-header.png" alt="Rubato Woodcrafts">
     </header>
 
+    <nav>
+        <span class="current">Gallery</span> <a href="articles.html">Articles</a> <a href="../contact.html">Contact</a>
+    </nav>
+
+    <hr class="rule">
+
     <p class="quote">
         Tempo rubato means literally in robbed time, i.e., duration taken from one measure or beat and given to another
         <cite>Karl Wilson Gehrkens</cite>
@@ -175,16 +155,6 @@
     </div>
 
     <hr class="rule">
-
-    <section class="articles">
-        <h2>Articles</h2>
-        <a href="../why-i-dont-sell.html"><span>Why I don't sell my work</span></a>
-        <a href="article-wood.html"><span>What kind of wood do woodworkers want?</span></a>
-    </section>
-
-    <nav>
-        <a href="../contact.html">Contact</a>
-    </nav>
 
     <footer>
         Rubato Woodcrafts is located on Bainbridge Island, Washington.
