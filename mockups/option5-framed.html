@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rubato Woodcrafts — Mockup 5: Framed Prints</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #f7f7f7;
+            color: #111;
+            line-height: 1.6;
+            padding: 1.25rem;
+        }
+
+        .frame {
+            border: 1px solid #111;
+            background: #fff;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #111;
+        }
+
+        header img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+        }
+
+        .quote {
+            max-width: 600px;
+            margin: 2.5rem auto;
+            text-align: center;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .quote cite {
+            display: block;
+            margin-top: 0.75rem;
+            font-style: normal;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #999;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery a {
+            display: block;
+            border: 1px solid #111;
+            padding: 12px;
+            background: #fff;
+        }
+
+        .gallery .mat {
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery a:hover img {
+            opacity: 0.85;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #111;
+            font-size: 0.9rem;
+            letter-spacing: 0.06em;
+            color: #444;
+        }
+
+        @media (max-width: 480px) {
+            .frame { padding: 2rem 1rem; }
+            .gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="frame">
+        <header>
+            <img src="../logo-header.png" alt="Rubato Woodcrafts">
+        </header>
+
+        <p class="quote">
+            Tempo rubato means literally in robbed time, i.e., duration taken from one measure or beat and given to another
+            <cite>Karl Wilson Gehrkens</cite>
+        </p>
+
+        <div class="gallery">
+            <a href="../gallery/IMG_9286.jpeg"><span class="mat"><img src="../gallery/IMG_9286.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_0055.jpeg"><span class="mat"><img src="../gallery/IMG_0055.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_5616.jpeg"><span class="mat"><img src="../gallery/IMG_5616.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_0682.jpeg"><span class="mat"><img src="../gallery/IMG_0682.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_5694.jpeg"><span class="mat"><img src="../gallery/IMG_5694.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_6126.jpeg"><span class="mat"><img src="../gallery/IMG_6126.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_6322.jpeg"><span class="mat"><img src="../gallery/IMG_6322.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_6520.jpeg"><span class="mat"><img src="../gallery/IMG_6520.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_8210.jpeg"><span class="mat"><img src="../gallery/IMG_8210.jpeg" alt="Woodcraft piece"></span></a>
+            <a href="../gallery/IMG_9890.jpeg"><span class="mat"><img src="../gallery/IMG_9890.jpeg" alt="Woodcraft piece"></span></a>
+        </div>
+
+        <footer>
+            Rubato Woodcrafts is located on Bainbridge Island, Washington.
+        </footer>
+    </div>
+</body>
+</html>

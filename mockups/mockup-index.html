@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rubato Woodcrafts — Redesign Mockups</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #fff;
+            color: #111;
+            line-height: 1.6;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .options {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .option {
+            border: 1px solid #ccc;
+        }
+
+        .option .preview {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background: #fafafa;
+        }
+
+        .option iframe {
+            width: 400%;
+            height: 1200px;
+            border: 0;
+            transform: scale(0.25);
+            transform-origin: 0 0;
+            pointer-events: none;
+        }
+
+        .option .info {
+            padding: 1rem 1.25rem 1.25rem;
+            border-top: 1px solid #ccc;
+        }
+
+        .option h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .option p {
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 0.75rem;
+        }
+
+        .option a.open {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #111;
+            border: 1px solid #111;
+            padding: 0.4rem 1rem;
+            text-decoration: none;
+        }
+
+        .option a.open:hover {
+            background: #111;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rubato Woodcrafts — Redesign Mockups</h1>
+    <p class="sub">Five black &amp; white options. Click "Open" to view full size.</p>
+
+    <div class="options">
+        <div class="option">
+            <div class="preview"><iframe src="option1-gallery-wall.html" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="info">
+                <h2>1. Gallery Wall</h2>
+                <p>Centered logo, uniform square grid, thin hairline rules, lots of whitespace. The safest, cleanest option.</p>
+                <a class="open" href="option1-gallery-wall.html">Open</a>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="preview"><iframe src="option2-masonry.html" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="info">
+                <h2>2. Masonry</h2>
+                <p>Logo left with tagline right, solid rule header/footer, photos at natural proportions in flowing columns.</p>
+                <a class="open" href="option2-masonry.html">Open</a>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="preview"><iframe src="option3-ink.html" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="info">
+                <h2>3. Ink (Dark)</h2>
+                <p>Near-black background, inverted logo, photos glow like a gallery at night. Same simple grid.</p>
+                <a class="open" href="option3-ink.html">Open</a>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="preview"><iframe src="option4-editorial.html" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="info">
+                <h2>4. Editorial</h2>
+                <p>Single narrow column, serif type, one large photo at a time. Reads like a quiet magazine feature.</p>
+                <a class="open" href="option4-editorial.html">Open</a>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="preview"><iframe src="option5-framed.html" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="info">
+                <h2>5. Framed Prints</h2>
+                <p>Whole page inside a hairline frame; each photo matted in its own thin black frame, like prints on a wall.</p>
+                <a class="open" href="option5-framed.html">Open</a>
+            </div>
+        </div>
+
+        <div class="option">
+            <div class="preview"><iframe src="option6-gallery-wall-natural.html" loading="lazy" tabindex="-1"></iframe></div>
+            <div class="info">
+                <h2>6. Gallery Wall, Natural Proportions</h2>
+                <p>Option 1's centered layout and hairline rules, with Option 2's uncropped photos flowing in masonry columns.</p>
+                <a class="open" href="option6-gallery-wall-natural.html">Open</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

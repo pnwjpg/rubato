@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rubato Woodcrafts — Mockup 3: Ink (Dark)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #000;
+            color: #eee;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 1rem 2rem;
+        }
+
+        header img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            filter: invert(1);
+        }
+
+        .quote {
+            max-width: 560px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+            text-align: center;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #aaa;
+        }
+
+        .quote cite {
+            display: block;
+            margin-top: 0.75rem;
+            font-style: normal;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #777;
+        }
+
+        .gallery {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery a {
+            display: block;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery a:hover img {
+            opacity: 0.85;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3.5rem 1.5rem 4rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+            color: #999;
+        }
+
+        @media (max-width: 480px) {
+            .gallery { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../logo-header.png" alt="Rubato Woodcrafts">
+    </header>
+
+    <p class="quote">
+        Tempo rubato means literally in robbed time, i.e., duration taken from one measure or beat and given to another
+        <cite>Karl Wilson Gehrkens</cite>
+    </p>
+
+    <div class="gallery">
+        <a href="../gallery/IMG_9286.jpeg"><img src="../gallery/IMG_9286.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_0055.jpeg"><img src="../gallery/IMG_0055.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_5616.jpeg"><img src="../gallery/IMG_5616.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_0682.jpeg"><img src="../gallery/IMG_0682.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_5694.jpeg"><img src="../gallery/IMG_5694.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_6126.jpeg"><img src="../gallery/IMG_6126.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_6322.jpeg"><img src="../gallery/IMG_6322.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_6520.jpeg"><img src="../gallery/IMG_6520.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_8210.jpeg"><img src="../gallery/IMG_8210.jpeg" alt="Woodcraft piece"></a>
+        <a href="../gallery/IMG_9890.jpeg"><img src="../gallery/IMG_9890.jpeg" alt="Woodcraft piece"></a>
+    </div>
+
+    <footer>
+        Rubato Woodcrafts is located on Bainbridge Island, Washington.
+    </footer>
+</body>
+</html>
