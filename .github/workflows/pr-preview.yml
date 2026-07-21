@@ -1,0 +1,71 @@
+name: PR preview
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, closed]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: pr-preview-${{ github.event.number }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-preview:
+    if: github.event.action != 'closed' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      # The "Sync gallery" workflow may push a resync commit to the PR branch,
+      # but that bot push does not re-trigger this workflow. Running the resync
+      # here guarantees the preview always reflects the post-resync state.
+      - name: Resync gallery
+        run: ./resync-gallery.sh
+
+      - name: Deploy preview to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          branch: gh-pages
+          target-folder: pr-${{ github.event.number }}
+
+      - name: Comment preview URL
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-preview
+          message: |
+            🔍 Preview deployed: https://www.rubatowoodcrafts.com/pr-${{ github.event.number }}/
+
+            Built from ${{ github.event.pull_request.head.sha }} (gallery resync applied).
+
+  remove-preview:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Remove preview folder
+        run: |
+          if [ -d "pr-${{ github.event.number }}" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git rm -r "pr-${{ github.event.number }}"
+            git commit -m "chore: remove preview for PR #${{ github.event.number }}"
+            git push
+          else
+            echo "No preview folder to remove."
+          fi
+
+      - name: Update comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: pr-preview
+          message: |
+            🧹 Preview environment removed (PR closed).
